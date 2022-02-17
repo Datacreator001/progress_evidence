@@ -1,21 +1,30 @@
-import products from '../products.json';
-
+import {Img} from "./Img"
 export const Product = (props) => {
-	const { name, images, description } = props.product;
+	const { name, images, description, features, price } = props.product;
+
+	
+
+	
 
 	return (
 		<article className='product'>
 			<h3>{name}</h3>
-			<img src={images[0].imageSrc} alt='' />
+			<Img images={images} />
 			<p>{description}</p>
 			<ul>
-				<li>Likes moisture</li>
-				<li>Easy care</li>
+				{features.map((feature, idx) => {
+					return <li key={idx}>{feature}</li>;
+				})}
 			</ul>
-			<p>&pound;6.99</p>
+			<p>&pound;{price}</p>
 			<div className='promo-blocks__actions'>
 				<a className='button--anchor'>Full Details</a>
-				<button>Add to cart</button>
+				<button onClick={() => props.addToCart(props.product)}>
+					Add to cart
+				</button>
+				<button onClick={() => props.removeFromCart(props.product)}>
+					Remove Item
+				</button>
 			</div>
 		</article>
 	);
