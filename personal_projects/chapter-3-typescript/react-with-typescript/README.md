@@ -24,7 +24,7 @@ $ cd ../react-with-typescript
 $ npm install
 $ npm run start
 ```
-## Demo
+## Project Demo
 
 [Project Demo](https://affectionate-golick-2bda36.netlify.app) 
 
@@ -37,8 +37,7 @@ $ npm run start
 | typescript       | strict syntactical superset of JavaScript and adds optional static typing to the language.                      |
 | react-scripts   | set of scripts from the create-react-app starter pack|
 
-## Learn More
+## Stretch Goals
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Add update and delete functionality
+- Update the UI
