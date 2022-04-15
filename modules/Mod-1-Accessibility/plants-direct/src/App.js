@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import data from './products.json';
 import { Product } from './components/Product';
-import { Img } from './components/Img';
 import './App.css';
 
 function App() {
@@ -26,8 +25,9 @@ function App() {
 					key={product.productId}
 					product={product}
 					addToCart={addToCart}
-          removeFromCart = {removeFromCart}
-          
+					removeFromCart={removeFromCart}
+					setCartStatus={setCartStatus}
+					cartStatus={cartStatus[product.productId]}
 				/>
 			))}
 		</div>
