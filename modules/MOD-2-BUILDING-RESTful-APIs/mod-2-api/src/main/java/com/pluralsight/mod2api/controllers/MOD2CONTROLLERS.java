@@ -1,24 +1,27 @@
 package com.pluralsight.mod2api.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pluralsight.mod2api.models.ApprenticeEntity;
+import com.pluralsight.mod2api.services.ApprenticeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 public class MOD2CONTROLLERS {
-    @RequestMapping("/hello")
-    public String hello(){
-        return "https://http-challenge.multiverse-coaches.io.";
+    @Autowired
+    private ApprenticeService apprenticeService;
+
+    @RequestMapping("/apprentices")
+    public List<ApprenticeEntity> getApprentices() {
+        return apprenticeService.getAllApprentices();
     }
 
-    @GetMapping(value = "/MV", produces = "application/json") public String getURLValue(HttpServletRequest request){
-        String url = "https://http-challenge.multiverse-coaches.io";
-        RestTemplate restTemplate =new RestTemplate();
-        String result =restTemplate.getForObject(url, String.class);
-        return result;
-
+    @RequestMapping("/apprentices/{id}")
+    public ApprenticeEntity getApprentice(@PathVariable long id) {
+        return apprenticeService.getOneApprentice(id);
     }
+
 }
