@@ -16,4 +16,8 @@ public class ApprenticeService {
     public List<Apprentice> getApprentice(){
        return apprenticeRepo.findAll();
     }
+
+    public void addNewApprentice(Apprentice apprentice) {
+        apprenticeRepo.save(apprentice);
+    }
 }

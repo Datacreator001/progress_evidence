@@ -18,6 +18,8 @@ public class Apprentice {
     private Long id;
     private String name;
 
+    public Apprentice(){}
+
     public Apprentice(Long id, String name) {
         this.id = id;
         this.name = name;
