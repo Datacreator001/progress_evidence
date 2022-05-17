@@ -1,6 +1,20 @@
 package com.mod2api.messages.messages;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Messages {
+    @Id
+    @SequenceGenerator(
+            name = "message_sequence",
+            sequenceName = "message_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "message_sequence"
+    )
     public Long id;
     public String message;
 
