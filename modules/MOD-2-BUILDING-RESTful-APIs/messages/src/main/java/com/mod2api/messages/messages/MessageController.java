@@ -1,11 +1,12 @@
 package com.mod2api.messages.messages;
 
-import com.mod2api.messages.apprentice.Apprentice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.util.List;
-@RequestMapping(path= "api/v1/messages")
+import java.util.Optional;
+
+@RequestMapping(path= "messages")
 @RestController
 public class MessageController {
 
@@ -27,8 +28,24 @@ public class MessageController {
     public List<Messages> getMessages(){
         return messageService.getMessages();
     }
+    @GetMapping(path = "{messageId}")
+    public List<Messages> getMessage(@PathVariable("messageId") Long messageId){
+       return messageService.getMessage(messageId);
+    }
     @PostMapping
     public void addNewMessage(@RequestBody Messages messages){
         messageService.addNewMessage(messages);
     }
+    @DeleteMapping(path = "{messageId}")
+    public void deleteMessage(@PathVariable("messageId") Long messageId){
+        messageService.deleteMessage(messageId);
+    }
+    @PutMapping(path = "{messageId}")
+    public void updateMessage(
+            @PathVariable("messageId") Long messageId,
+            @RequestParam(required = false) String message){
+                messageService.updateMessage(messageId,message);
+    }
+
+
 }
