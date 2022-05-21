@@ -28,10 +28,14 @@ public class MessageController {
     public List<Messages> getMessages(){
         return messageService.getMessages();
     }
-    @GetMapping(path = "{messageId}")
-    public List<Messages> getMessage(@PathVariable("messageId") Long messageId){
-       return messageService.getMessage(messageId);
-    }
+//    @GetMapping(path = "{messageId}")
+//    public Messages getMessage(@PathVariable("messageId") Long messageId){
+//        return messageService.getMessage(messageId)
+//                .stream()
+//                .filter(messages -> messageId.equals(messages.getId()))
+//                .findFirst()
+//                .orElseThrow(()->new IllegalStateException("Apprentice" + messageId + " does not exist"));
+//    }
     @PostMapping
     public void addNewMessage(@RequestBody Messages messages){
         messageService.addNewMessage(messages);
