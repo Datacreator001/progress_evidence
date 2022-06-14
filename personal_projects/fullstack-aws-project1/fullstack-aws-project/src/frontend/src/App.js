@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { getAllStudents } from "./client";
-import { Layout, Menu, Breadcrumb, Table } from 'antd';
+import {Layout, Menu, Breadcrumb, Table, Spin, Empty} from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
     FileOutlined,
     TeamOutlined,
-    UserOutlined,
+    UserOutlined, LoadingOutlined,
 } from '@ant-design/icons';
 
 import './App.css';
@@ -36,10 +36,13 @@ const columns = [
         key: 'gender',
     },
 ];
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function App() {
     const [students, setStudents] = useState([]);
-    const [collapsed, setCollapsed] = useState(false)
+    const [collapsed, setCollapsed] = useState(false);
+    const [fetching, setFectching] = useState(true);
+
 
     const fetchStudents = () =>
         getAllStudents()
@@ -47,6 +50,7 @@ function App() {
             .then(data => {
                 console.log(data);
                 setStudents(data);
+                setFectching(false)
             })
 
     useEffect(() => {
@@ -55,11 +59,20 @@ function App() {
     }, []);
 
     const renderStudents = () => {
+        if (fetching){
+            return <Spin indicator={antIcon} />
+        }
         if (students.length<=0){
-            return "no data available"
+            return <Empty />
         }
         return <Table dataSource={students}
-                      columns={columns} />;
+                      columns={columns}
+                      bordered
+                      title={()=> "Students"}
+                      pagination={{ pageSize: 50 }}
+                      scroll={{ y: 240 }}
+                      rowKey = {(student)=> student.id}
+        />;
     }
 
     return <Layout style={{ minHeight: '100vh' }}>
@@ -98,7 +111,7 @@ function App() {
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+            <Footer style={{ textAlign: 'center' }}>By Nicholas Bryant ©2022 </Footer>
         </Layout>
     </Layout>
 }
