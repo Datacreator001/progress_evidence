@@ -62,8 +62,9 @@
 ### Installation
 
 1. Clone the repo
+- navigate to personal_projects/fullstack-aws-project1/fullstack-aws-project/src/frontend
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone git@github.com:Datacreator001/progress_evidence.git
    ```
 2. Install NPM packages
    ```sh
