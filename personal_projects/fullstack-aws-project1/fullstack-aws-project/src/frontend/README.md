@@ -44,7 +44,6 @@
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * React.js
 * Unfetch
@@ -53,4 +52,5 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Layout
-<img src="images/logo.png" alt="Logo" width="80" height="80">
+- For Full Image click the layout
+<img src="images/Layout.png" alt="Logo" width="400" height="400">
